@@ -4,23 +4,30 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Database\Eloquent\Concerns\HasUuids;
-use App\Models\Booking;
 
-class BookingInspection extends Model
+class VehicleType extends Model
 {
     use HasFactory, SoftDeletes, HasUuids;
 
     protected $keyType = 'string';
     public $incrementing = false;
 
-    protected $fillable = ['booking_id', 'question_snapshot', 'answer'];
+    protected $fillable = ['name', 'size', 'is_active', 'description'];
 
-    public function booking(): BelongsTo
+    protected $casts = [
+        'is_active' => 'boolean',
+    ];
+
+    public function customerVehicles(): HasMany
     {
-        return $this->belongsTo(Booking::class);
+        return $this->hasMany(CustomerVehicle::class);
+    }
+
+    public function servicePriceTiers(): HasMany
+    {
+        return $this->hasMany(ServicePriceTier::class);
     }
 }
