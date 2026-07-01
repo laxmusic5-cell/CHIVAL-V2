@@ -20,6 +20,13 @@ class DatabaseSeeder extends Seeder
             Role::firstOrCreate(['name' => $roleName]);
         }
 
+        $this->call([
+            VehicleTypeSeeder::class,
+            ServiceSeeder::class,
+            AddonSeeder::class,
+            CoverageAreaSeeder::class,
+        ]);
+
         // User::factory(10)->create();
 
         User::firstOrCreate([
