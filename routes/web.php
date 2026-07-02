@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\AddonController;
+use App\Http\Controllers\CoverageAreaController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
+use App\Http\Controllers\ServicePriceTierController;
 use App\Http\Controllers\VehicleTypeController;
 use Illuminate\Support\Facades\Route;
 
@@ -22,6 +24,8 @@ Route::middleware('auth')->group(function () {
     Route::resource('vehicle-types', VehicleTypeController::class)->except(['show']);
     Route::resource('services', ServiceController::class)->except(['show']);
     Route::resource('addons', AddonController::class)->except(['show']);
+    Route::resource('coverage-areas', CoverageAreaController::class)->except(['show']);
+    Route::resource('service-price-tiers', ServicePriceTierController::class)->except(['show']);
 });
 
 require __DIR__.'/auth.php';
