@@ -6,6 +6,7 @@ use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServicePriceTierController;
 use App\Http\Controllers\VehicleTypeController;
+use App\Http\Controllers\BookingController;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
@@ -26,6 +27,7 @@ Route::middleware('auth')->group(function () {
     Route::resource('addons', AddonController::class)->except(['show']);
     Route::resource('coverage-areas', CoverageAreaController::class)->except(['show']);
     Route::resource('service-price-tiers', ServicePriceTierController::class)->except(['show']);
+    Route::resource('bookings', BookingController::class)->except(['show']);
 });
 
 require __DIR__.'/auth.php';
