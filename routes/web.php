@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AddonController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\VehicleTypeController;
@@ -20,6 +21,7 @@ Route::middleware('auth')->group(function () {
 
     Route::resource('vehicle-types', VehicleTypeController::class)->except(['show']);
     Route::resource('services', ServiceController::class)->except(['show']);
+    Route::resource('addons', AddonController::class)->except(['show']);
 });
 
 require __DIR__.'/auth.php';
